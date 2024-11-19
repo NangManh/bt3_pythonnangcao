@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Thêm Sản Phẩm</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Thêm Sản Phẩm Mới</h1>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <form method="post">
+            <label for="product_name">Tên sản phẩm:</label>
+            <input type="text" name="product_name" required>
+            <label for="product_price">Giá sản phẩm:</label>
+            <input type="text" name="product_price" required>
+            <label for="category_id">Mã danh mục:</label>
+            <input type="text" name="category_id" required>
+            <button type="submit">Thêm Sản Phẩm</button>
+        </form>
+        <a class="button" href="{{ url_for('menu') }}">Quay lại menu</a>
+    </div>
+</body>
+</html>

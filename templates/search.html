@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Tìm Kiếm Sản Phẩm</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Tìm Kiếm Sản Phẩm</h1>
+        <form method="post">
+            <label for="product_name">Tên sản phẩm:</label>
+            <input type="text" name="product_name" required>
+            <button type="submit">Tìm Kiếm</button>
+        </form>
+
+        <h2>Kết quả tìm kiếm:</h2>
+        <ul>
+            {% if results %}
+                {% for row in results %}
+                    <li>ID: {{ row[0] }}, Tên: {{ row[1] }}, Giá: {{ row[2] }}, Danh mục: {{ row[3] }}</li>
+                {% endfor %}
+            {% else %}
+                <li>Không tìm thấy sản phẩm nào.</li>
+            {% endif %}
+        </ul>
+        <a class="button" href="{{ url_for('menu') }}">Quay lại menu</a>
+    </div>
+</body>
+</html>

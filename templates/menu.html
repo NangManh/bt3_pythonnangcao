@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Menu Quản Lý Sản Phẩm</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Menu Quản Lý Sản Phẩm</h1>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <div class="button-container">
+            <a class="button" href="{{ url_for('search') }}">Tìm Kiếm Sản Phẩm</a>
+            <a class="button" href="{{ url_for('add_product_route') }}">Thêm Sản Phẩm Mới</a>
+        </div>
+
+        <div class="logout-container">
+            <a class="button logout-button" href="{{ url_for('logout') }}">Đăng Xuất</a>
+        </div>
+    </div>
+</body>
+</html>

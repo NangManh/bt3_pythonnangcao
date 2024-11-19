@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Đăng Nhập</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Đăng Nhập Hệ Thống</h1>
+        <form method="post">
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" name="username" required>
+            <label for="password">Mật khẩu:</label>
+            <input type="password" name="password" required>
+            <button type="submit">Đăng Nhập</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
